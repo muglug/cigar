@@ -33,6 +33,8 @@ class Outputter
     }
 
     /**
+     * @param Result[] $results
+     *
      * @return void
      */
     public function outputResults(array $passedResults, array $results, float $startTime)
