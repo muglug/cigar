@@ -11,7 +11,7 @@ class AsyncChecker
     private $checkSsl;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authorizationHeader;
 
@@ -31,6 +31,8 @@ class AsyncChecker
      * @param Url[] $urlsToCheck
      *
      * @return Result[]
+     *
+     * @psalm-return array<int, Result>
      */
     public function check(array $urlsToCheck): array
     {
@@ -69,9 +71,8 @@ class AsyncChecker
             $channels[$url] = $channel;
         }
 
-        $active = null;
 
-        $running = null;
+        $running = 0;
         do {
             curl_multi_exec($mh, $running);
         } while ($running);

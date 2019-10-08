@@ -28,7 +28,8 @@
     "symfony/process": "^3.3",
     "mikey179/vfsstream": "^1.6",
     "satooshi/php-coveralls": "^1.0",
-    "kahlan/kahlan": "^4.0"
+    "kahlan/kahlan": "^4.0",
+    "vimeo/psalm": "^3.5"
   },
   "bin": [
     "bin/cigar"

@@ -15,7 +15,7 @@ class Result
     private $statusCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $contents;
 
@@ -37,6 +37,9 @@ class Result
         return $this->statusMatches() && $this->responseMatchesContentType() && $this->responseHasContent();
     }
 
+    /**
+     * @return null|string
+     */
     public function getContentType()
     {
         return $this->contentType;
@@ -52,7 +55,7 @@ class Result
         return $this->url;
     }
 
-    public function getContents()
+    public function getContents() : ?string
     {
         return $this->contents;
     }
@@ -81,6 +84,6 @@ class Result
             return true; // nothing to check
         }
 
-        return (bool) strstr($this->contents, $expectedContent);
+        return (bool) strstr((string) $this->contents, $expectedContent);
     }
 }

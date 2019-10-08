@@ -4,6 +4,9 @@ namespace Brunty\Cigar;
 
 class JsonWriter implements WriterInterface
 {
+    /**
+     * @return void
+     */
     public function writeErrorLine(string $message)
     {
         echo json_encode([
@@ -12,6 +15,9 @@ class JsonWriter implements WriterInterface
         ]), PHP_EOL;
     }
 
+    /**
+     * @return void
+     */
     public function writeResults(int $numberOfPassedResults, int $numberOfResults, bool $passed, float $timeDiff, Result ...$results)
     {
         echo json_encode([
@@ -24,6 +30,11 @@ class JsonWriter implements WriterInterface
         ]), PHP_EOL;
     }
 
+    /**
+     * @return (null|string|int|bool)[]
+     *
+     * @psalm-return array{passed: bool, url: string, status_code_expected: int, status_code_actual: int, content_type_expected: null|string, content_type_actual: null|string, content_expected: null|string}
+     */
     private function line(Result $result): array
     {
         return [
